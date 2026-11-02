@@ -64,7 +64,7 @@ export default function Topbar() {
   };
 
   const currentRoute = getPageInfo();
-  const unreadNotifs = notifications.filter(n => !n.read);
+  const unreadNotifs = (notifications || []).filter(n => !n.read);
 
   const handleRoleChange = (roleKey) => {
     switchRole(roleKey);
@@ -193,7 +193,7 @@ export default function Topbar() {
                 </span>
               </div>
               <div className="max-h-64 overflow-y-auto divide-y divide-slate-100">
-                {notifications.slice(0, 4).map((n) => (
+                {(notifications || []).slice(0, 4).map((n) => (
                   <div
                     key={n.id}
                     onClick={() => {

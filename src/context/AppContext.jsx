@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { initialSummaryMetrics, monthlySpendData, spendByCategoryData, topSuppliersSpendData, rfqComparisonData } from '../data/mockData';
+import { initialSummaryMetrics, monthlySpendData, spendByCategoryData, topSuppliersSpendData, rfqComparisonData, initialRecentActivities } from '../data/mockData';
 import { requisitionService } from '../services/requisitionService';
 import { tenderService } from '../services/tenderService';
 import { bidService } from '../services/bidService';
@@ -21,6 +21,7 @@ export function AppProvider({ children }) {
   const [approvals, setApprovals] = useState(() => approvalService.getApprovals());
   const [notifications, setNotifications] = useState(() => notificationService.getNotifications());
   const [auditLogs, setAuditLogs] = useState(() => tenderService.getAuditLogs());
+  const [activities, setActivities] = useState(() => initialRecentActivities);
   const [toasts, setToasts] = useState([]);
   const [selectedSupplierForRfq, setSelectedSupplierForRfq] = useState(null);
 
@@ -219,6 +220,7 @@ export function AppProvider({ children }) {
     setApprovals(approvalService.getApprovals());
     setNotifications(notificationService.getNotifications());
     setAuditLogs(tenderService.getAuditLogs());
+    setActivities(initialRecentActivities);
     addToast('Demo dataset has been restored to factory default state.', 'success');
   };
 
@@ -226,6 +228,8 @@ export function AppProvider({ children }) {
     <AppContext.Provider
       value={{
         metrics,
+        activities,
+        setActivities,
         requisitions,
         tenders,
         bids,

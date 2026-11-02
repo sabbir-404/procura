@@ -130,3 +130,4 @@ export const tenderService = {
     return logs;
   }
 };
+

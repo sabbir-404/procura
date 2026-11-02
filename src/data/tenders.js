@@ -159,3 +159,4 @@ export const INITIAL_TENDERS = [
     ]
   }
 ];
+

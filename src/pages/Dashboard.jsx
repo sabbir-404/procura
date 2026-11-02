@@ -53,7 +53,7 @@ export default function Dashboard() {
     return `BDT ${val}`;
   };
 
-  const activeTendersCount = tenders.filter(t => t.status === 'Published' || t.status === 'Under Evaluation').length;
+  const activeTendersCount = (tenders || []).filter(t => t.status === 'Published' || t.status === 'Under Evaluation').length;
 
   return (
     <div className="space-y-6">
@@ -62,7 +62,7 @@ export default function Dashboard() {
         <div>
           <div className="flex items-center gap-2">
             <h2 className="text-xl font-bold text-slate-900 tracking-tight">
-              Good morning, {currentUser.name.split(' ')[0]}
+              Good morning, {currentUser?.name ? currentUser.name.split(' ')[0] : 'Admin'}
             </h2>
             <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-50 text-teal-700 border border-teal-200">
               <span className="w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse" />
@@ -288,7 +288,7 @@ export default function Dashboard() {
           </div>
 
           <div className="divide-y divide-slate-100">
-            {activities.slice(0, 5).map((act) => (
+            {(activities || []).slice(0, 5).map((act) => (
               <div key={act.id} className="py-3 flex items-center justify-between text-xs hover:bg-slate-50/70 px-2 rounded-lg transition-colors">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-600 font-bold shrink-0">

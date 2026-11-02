@@ -259,7 +259,7 @@ export default function Suppliers() {
                   <td className="py-3.5 px-4">
                     <div className="flex items-center gap-3">
                       <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-slate-100 to-slate-200 text-slate-800 font-bold text-xs flex items-center justify-center border border-slate-300/80 shrink-0 group-hover:border-teal-400 transition-colors">
-                        {sup.name.slice(0, 2).toUpperCase()}
+                        {(sup.name || 'SP').slice(0, 2).toUpperCase()}
                       </div>
                       <div>
                         <span className="font-bold text-slate-900 group-hover:text-teal-700 transition-colors block">
@@ -330,7 +330,7 @@ export default function Suppliers() {
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded-xl bg-slate-50 border border-slate-200 gap-3">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-xl bg-teal-600 text-white font-bold text-base flex items-center justify-center shadow-xs">
-                  {selectedSupplier.name.slice(0, 2).toUpperCase()}
+                  {(selectedSupplier.name || 'SP').slice(0, 2).toUpperCase()}
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
